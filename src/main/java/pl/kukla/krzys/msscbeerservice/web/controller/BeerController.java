@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import pl.kukla.krzys.msscbeerservice.service.BeerService;
 import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 /**
@@ -34,7 +35,7 @@ public class BeerController {
     }
 
     @PostMapping
-    public ResponseEntity<BeerDto> createNewBeer(@RequestBody BeerDto beerDto) {
+    public ResponseEntity<BeerDto> createNewBeer(@RequestBody @Valid BeerDto beerDto) {
         BeerDto savedBeer = beerService.saveBeer(beerDto);
 
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -44,7 +45,7 @@ public class BeerController {
 
     @PutMapping("/{beerId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void updateBeer(@PathVariable UUID beerId, @RequestBody BeerDto beerDto) {
+    public void updateBeer(@PathVariable UUID beerId, @RequestBody @Valid BeerDto beerDto) {
         beerService.updateBeer(beerId, beerDto);
 
     }
