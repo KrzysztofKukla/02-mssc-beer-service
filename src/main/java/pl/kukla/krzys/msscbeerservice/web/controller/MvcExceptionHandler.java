@@ -20,7 +20,7 @@ public class MvcExceptionHandler {
     public ResponseEntity<List> handleConstraintException(ConstraintViolationException ex) {
         List<String> errors = new ArrayList<>();
         ex.getConstraintViolations().forEach(i -> {
-            errors.add(i.getPropertyPath() + " " + i.getMessage());
+            errors.add(i.toString());
         });
         return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
