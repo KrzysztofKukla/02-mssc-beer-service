@@ -43,7 +43,7 @@
 			<scope>runtime</scope>
 		</dependency>
 
-		<!-- old JAXB was removed from standard libraries in Java9, which does exist in Java8
+		<!-- old JAXB was removed from standard libraries from Java 9, which does exist in Java8
 		and if we still want to use it we have to add that explicitly
 		Xml stuffs, Jaxb stuffs-->
 		<dependency>

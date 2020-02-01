@@ -8,6 +8,7 @@ import java.util.List;
 /**
  * @author Krzysztof Kukla
  */
+//this is standard Spring framework paging mechanisms
 public class BeerPagedList extends PageImpl<BeerDto> {
     public BeerPagedList(List<BeerDto> content, Pageable pageable, long total) {
         super(content, pageable, total);
