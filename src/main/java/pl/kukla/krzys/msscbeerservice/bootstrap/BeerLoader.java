@@ -15,6 +15,12 @@ import java.util.Arrays;
 @Component
 @RequiredArgsConstructor
 public class BeerLoader implements CommandLineRunner {
+
+    //is very common to treat UPC as a String
+    public static final String BEER_1_UPC = "012345678901234";
+    private static final String BEER_2_UPC = "045678901234567";
+    private static final String BEER_3_UPC = "089012345678901";
+
     private final BeerRepository beerRepository;
 
     //it will run when Spring Context starts
@@ -27,11 +33,13 @@ public class BeerLoader implements CommandLineRunner {
 
     private void loadBeers() {
         Beer beer1 = Beer.builder()
-            .beerName("first").beerStyle("first style").minOnHand(10).quantityToBrew(20).price(new BigDecimal("19.25")).upc(122L).build();
+            .beerName("first").beerStyle("first style").minOnHand(10).quantityToBrew(20).price(new BigDecimal("19.25")).upc(BEER_1_UPC).build();
         Beer beer2 = Beer.builder()
-            .beerName("second").beerStyle("secondt style").minOnHand(20).quantityToBrew(30).price(new BigDecimal("29.25")).upc(722L).build();
+            .beerName("second").beerStyle("secondt style").minOnHand(20).quantityToBrew(30).price(new BigDecimal("29.25")).upc(BEER_2_UPC).build();
+        Beer beer3 = Beer.builder()
+            .beerName("third").beerStyle("third style").minOnHand(30).quantityToBrew(40).price(new BigDecimal("45.25")).upc(BEER_3_UPC).build();
 
-        beerRepository.saveAll(Arrays.asList(beer1, beer2));
+        beerRepository.saveAll(Arrays.asList(beer1, beer2, beer3));
 
     }
 

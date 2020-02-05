@@ -14,6 +14,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import pl.kukla.krzys.msscbeerservice.bootstrap.BeerLoader;
 import pl.kukla.krzys.msscbeerservice.service.BeerService;
 import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;
 import pl.kukla.krzys.msscbeerservice.web.model.BeerStyleEnum;
@@ -43,7 +44,7 @@ class BeerControllerTest {
         validBeerDto = BeerDto.builder()
             .beerName("first beer name")
             .beerStyle(BeerStyleEnum.SAISON)
-            .upc(112344L)
+            .upc(BeerLoader.BEER_1_UPC)
             .price(new BigDecimal(20.99))
             .build();
     }
