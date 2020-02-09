@@ -19,12 +19,14 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class BeerServiceImpl implements BeerService {
 
+    public static final String CANNOT_FIND_BEER = "Cannot find Beer with id-> ";
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
 
     @Override
     public BeerDto getById(UUID beerId) {
-        Beer beer = beerRepository.findById(beerId).orElseThrow(NotFoundException::new);
+        Beer beer = beerRepository.findById(beerId)
+            .orElseThrow(() -> new NotFoundException(CANNOT_FIND_BEER + beerId.toString()));
         return beerMapper.beerToBeerDto(beer);
     }
 
@@ -43,7 +45,7 @@ public class BeerServiceImpl implements BeerService {
             Beer savedBeer = beerRepository.save(beer);
             return beerMapper.beerToBeerDto(savedBeer);
         }
-        throw new NotFoundException();
+        throw new NotFoundException(CANNOT_FIND_BEER + beerId.toString());
     }
 
 }

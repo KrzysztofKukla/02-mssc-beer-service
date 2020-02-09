@@ -54,6 +54,6 @@ public class Beer {
     private Timestamp createdDate;
 
     @UpdateTimestamp
-    private Timestamp modifiedDate;
+    private Timestamp lastModifiedDate;
 
 }
