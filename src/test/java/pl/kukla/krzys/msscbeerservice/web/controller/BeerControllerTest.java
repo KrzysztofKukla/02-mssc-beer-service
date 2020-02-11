@@ -51,7 +51,8 @@ class BeerControllerTest {
 
     @Test
     void getBeerById() throws Exception {
-        BDDMockito.given(beerService.getById(ArgumentMatchers.any(UUID.class))).willReturn(validBeerDto);
+        boolean showInventoryOnHand = false;
+        BDDMockito.given(beerService.getById(ArgumentMatchers.any(UUID.class), showInventoryOnHand)).willReturn(validBeerDto);
 
         MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/api/v1/beer/{beerId}", UUID.randomUUID())
             .accept(MediaType.APPLICATION_JSON))
@@ -59,7 +60,7 @@ class BeerControllerTest {
             .andExpect(MockMvcResultMatchers.jsonPath("$.beerName", Matchers.equalTo(validBeerDto.getBeerName())))
             .andReturn();
 
-        BDDMockito.then(beerService).should().getById(ArgumentMatchers.any(UUID.class));
+        BDDMockito.then(beerService).should().getById(ArgumentMatchers.any(UUID.class), showInventoryOnHand);
     }
 
     @Test

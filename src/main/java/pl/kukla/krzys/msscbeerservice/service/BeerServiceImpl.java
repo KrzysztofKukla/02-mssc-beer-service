@@ -14,6 +14,7 @@ import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;
 import pl.kukla.krzys.msscbeerservice.web.model.BeerPagedList;
 
 import java.util.UUID;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
 /**
@@ -29,7 +30,7 @@ public class BeerServiceImpl implements BeerService {
     private final BeerMapper beerMapper;
 
     @Override
-    public BeerPagedList listBeers(String beerName, String beerStyle, PageRequest pageRequest) {
+    public BeerPagedList listBeers(String beerName, String beerStyle, PageRequest pageRequest, Boolean showInventoryOnHand) {
         BeerPagedList beerPagedList;
         Page<Beer> beerPage;
         if (StringUtils.isNotEmpty(beerName) && StringUtils.isNotEmpty(beerStyle)) {
@@ -49,7 +50,7 @@ public class BeerServiceImpl implements BeerService {
             beerPage
                 .getContent()
                 .stream()
-                .map(beerMapper::beerToBeerDto)
+                .map(enhanceInventory(showInventoryOnHand))
                 .collect(Collectors.toList()),
             PageRequest.of(
                 beerPage.getPageable().getPageNumber(),
@@ -60,10 +61,11 @@ public class BeerServiceImpl implements BeerService {
     }
 
     @Override
-    public BeerDto getById(UUID beerId) {
+    public BeerDto getById(UUID beerId, Boolean showInventoryOnHand) {
         Beer beer = beerRepository.findById(beerId)
             .orElseThrow(() -> new NotFoundException(CANNOT_FIND_BEER + beerId.toString()));
-        return beerMapper.beerToBeerDto(beer);
+        return showInventoryOnHand ?
+            beerMapper.beerToBeerDtoWithInventory(beer) : beerMapper.beerToBeerDto(beer);
     }
 
     @Override
@@ -82,6 +84,11 @@ public class BeerServiceImpl implements BeerService {
             return beerMapper.beerToBeerDto(savedBeer);
         }
         throw new NotFoundException(CANNOT_FIND_BEER + beerId.toString());
+    }
+
+    private Function<Beer, BeerDto> enhanceInventory(boolean showInventoryOnHand) {
+        return showInventoryOnHand ?
+            beerMapper::beerToBeerDtoWithInventory : beerMapper::beerToBeerDto;
     }
 
 }
