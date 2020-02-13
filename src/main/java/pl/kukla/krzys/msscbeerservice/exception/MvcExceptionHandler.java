@@ -1,4 +1,4 @@
-package pl.kukla.krzys.msscbeerservice.web.controller;
+package pl.kukla.krzys.msscbeerservice.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

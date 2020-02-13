@@ -8,8 +8,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import pl.kukla.krzys.msscbeerservice.domain.Beer;
+import pl.kukla.krzys.msscbeerservice.exception.NotFoundException;
 import pl.kukla.krzys.msscbeerservice.repository.BeerRepository;
-import pl.kukla.krzys.msscbeerservice.web.controller.NotFoundException;
 import pl.kukla.krzys.msscbeerservice.web.mapper.BeerMapper;
 import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;
 import pl.kukla.krzys.msscbeerservice.web.model.BeerPagedList;
@@ -66,6 +66,15 @@ public class BeerServiceImpl implements BeerService {
             beerPage.getTotalElements()
         );
         return beerPagedList;
+    }
+
+    @Cacheable(cacheNames = "beerUpcCache")
+    @Override
+    public BeerDto getByUpc(String upc) {
+        log.debug("Getting beer by upc-> " + upc);
+        Beer beer = beerRepository.findByUpc(upc)
+            .orElseThrow(() -> new NotFoundException("Cannot find beer with upc-> " + upc));
+        return beerMapper.beerToBeerDto(beer);
     }
 
     //@Cacheable means the method will be call only once, but next time method will be read from cache

@@ -25,7 +25,7 @@ import java.util.UUID;
 /**
  * @author Krzysztof Kukla
  */
-@RequestMapping("/api/v1/beer")
+@RequestMapping("/api/v1")
 @RestController
 @RequiredArgsConstructor
 public class BeerController {
@@ -38,7 +38,7 @@ public class BeerController {
     //each instance has own local cache, but we can configure ehcache to have only single cache for multiple instances of service
     //@GET method like this one - listBeers will NOT change to much, so it is good idea to add caching here to avoid call to database
     //only use cache when we are not getting inventory, because inventory can change often and quickly
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/beer", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BeerPagedList> listBeers(@RequestParam(value = "pageNumber", required = false) Integer pageNumber,
                                                    @RequestParam(value = "pageSize", required = false) Integer pageSize,
                                                    @RequestParam(value = "beerName", required = false) String beerName,
@@ -64,7 +64,7 @@ public class BeerController {
 
     //@GET by beerId will NOT change to much, so it is good idea to add caching here to avoid call to database
     //only use cache when we are not getting inventory, because inventory can change often and quickly
-    @GetMapping("/{beerId}")
+    @GetMapping("/beer/{beerId}")
     public ResponseEntity<BeerDto> getBeerById(@PathVariable UUID beerId,
                                                @RequestParam(value = "showInventoryOnHand", required = false) Boolean showInventoryOnHand) {
         if (showInventoryOnHand == null) {
@@ -74,7 +74,13 @@ public class BeerController {
         return ResponseEntity.ok(beerDto);
     }
 
-    @PostMapping
+    @GetMapping(value = "/beerUpc/{upc}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<BeerDto> getByUpc(@PathVariable String upc) {
+        BeerDto beerDto = beerService.getByUpc(upc);
+        return ResponseEntity.ok(beerDto);
+    }
+
+    @PostMapping(value = "/beer")
     public ResponseEntity<BeerDto> createNewBeer(@RequestBody @Valid BeerDto beerDto) {
         BeerDto savedBeer = beerService.saveBeer(beerDto);
 
@@ -83,7 +89,7 @@ public class BeerController {
         return new ResponseEntity<>(httpHeaders, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{beerId}")
+    @PutMapping("/beer/{beerId}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void updateBeer(@PathVariable UUID beerId, @RequestBody @Valid BeerDto beerDto) {
         beerService.updateBeer(beerId, beerDto);
