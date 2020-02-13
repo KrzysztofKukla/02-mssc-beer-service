@@ -35,6 +35,9 @@ public class BeerController {
 
     private final BeerService beerService;
 
+    //each instance has own local cache, but we can configure ehcache to have only single cache for multiple instances of service
+    //@GET method like this one - listBeers will NOT change to much, so it is good idea to add caching here to avoid call to database
+    //only use cache when we are not getting inventory, because inventory can change often and quickly
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<BeerPagedList> listBeers(@RequestParam(value = "pageNumber", required = false) Integer pageNumber,
                                                    @RequestParam(value = "pageSize", required = false) Integer pageSize,
@@ -59,6 +62,8 @@ public class BeerController {
         return ResponseEntity.ok(beerPagedList);
     }
 
+    //@GET by beerId will NOT change to much, so it is good idea to add caching here to avoid call to database
+    //only use cache when we are not getting inventory, because inventory can change often and quickly
     @GetMapping("/{beerId}")
     public ResponseEntity<BeerDto> getBeerById(@PathVariable UUID beerId,
                                                @RequestParam(value = "showInventoryOnHand", required = false) Boolean showInventoryOnHand) {

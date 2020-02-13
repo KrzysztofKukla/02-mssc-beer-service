@@ -3,6 +3,7 @@ package pl.kukla.krzys.msscbeerservice.service;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
@@ -29,8 +30,15 @@ public class BeerServiceImpl implements BeerService {
     private final BeerRepository beerRepository;
     private final BeerMapper beerMapper;
 
+    //'beerListCache' defines to use 'beerListCache' specif cache defined in 'ehcache.xml' file
+    //condition means this cache will be used only when 'showInventoryOnHand' is equals to 'false'
+    //here we did not specify the 'key' so Spring will generate key based on all those parameters
+    @Cacheable(cacheNames = "beerListCache", condition = "#showInventoryOnHand == false")
     @Override
     public BeerPagedList listBeers(String beerName, String beerStyle, PageRequest pageRequest, Boolean showInventoryOnHand) {
+
+        System.out.println("I was called");
+
         BeerPagedList beerPagedList;
         Page<Beer> beerPage;
         if (StringUtils.isNotEmpty(beerName) && StringUtils.isNotEmpty(beerStyle)) {
@@ -60,8 +68,15 @@ public class BeerServiceImpl implements BeerService {
         return beerPagedList;
     }
 
+    //@Cacheable means the method will be call only once, but next time method will be read from cache
+    //we generate cache base on 'key'
+    //if the key is not specified like above, Spring will generate key based on all parameters
+    @Cacheable(cacheNames = "beerCache", key = "#beerId", condition = "#showInventoryOnHand == false")
     @Override
     public BeerDto getById(UUID beerId, Boolean showInventoryOnHand) {
+
+        System.out.println("I was called");
+
         Beer beer = beerRepository.findById(beerId)
             .orElseThrow(() -> new NotFoundException(CANNOT_FIND_BEER + beerId.toString()));
         return showInventoryOnHand ?

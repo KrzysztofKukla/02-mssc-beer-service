@@ -7,13 +7,16 @@ import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * @author Krzysztof Kukla
  */
 //Page Object is a standard inside of Spring
-public class BeerPagedList extends PageImpl<BeerDto> {
+public class BeerPagedList extends PageImpl<BeerDto> implements Serializable {
+
+    private static final long serialVersionUID = 473285540053933763L;
 
     //this allows Jackson to communicate with another Spring service which has a page property and then bind to BeerPagedList
     //it allows to binding those all fields
