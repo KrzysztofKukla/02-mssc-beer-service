@@ -83,8 +83,7 @@ public class BeerServiceImpl implements BeerService {
     @Cacheable(cacheNames = "beerCache", key = "#beerId", condition = "#showInventoryOnHand == false")
     @Override
     public BeerDto getById(UUID beerId, Boolean showInventoryOnHand) {
-
-        System.out.println("I was called");
+        log.debug("Getting BeerDto by id->" + beerId.toString());
 
         Beer beer = beerRepository.findById(beerId)
             .orElseThrow(() -> new NotFoundException(CANNOT_FIND_BEER + beerId.toString()));
