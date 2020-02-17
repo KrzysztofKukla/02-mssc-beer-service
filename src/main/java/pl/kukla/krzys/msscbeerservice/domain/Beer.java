@@ -33,7 +33,7 @@ public class Beer {
     @Id
     @GeneratedValue(generator = "UUID") //Hibernate automatically will generate UUID settings for us
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-    @Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false)
+    @Column(length = 36, columnDefinition = "varchar(36)", updatable = false, nullable = false)
     //UUID is mapping to varchar and to easy read it from database we need to define type explicitly
     @Type(type = "org.hibernate.type.UUIDCharType")
     private UUID id;
