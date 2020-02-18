@@ -2,6 +2,7 @@ package pl.kukla.krzys.msscbeerservice.bootstrap;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.stereotype.Component;
 import pl.kukla.krzys.msscbeerservice.domain.Beer;
 import pl.kukla.krzys.msscbeerservice.repository.BeerRepository;
 
@@ -12,7 +13,7 @@ import java.util.UUID;
 /**
  * @author Krzysztof Kukla
  */
-//@Component
+@Component
 @RequiredArgsConstructor
 public class BeerLoader implements CommandLineRunner {
 
@@ -20,9 +21,6 @@ public class BeerLoader implements CommandLineRunner {
     public static final String BEER_1_UPC = "0631234200036";
     public static final String BEER_2_UPC = "0631234300019";
     public static final String BEER_3_UPC = "0083783375213";
-    public static final UUID BEER_1_UUID = UUID.fromString("0a818933-087d-47f2-ad83-2f986ed087eb");
-    public static final UUID BEER_2_UUID = UUID.fromString("a712d914-61ea-4623-8bd0-32c0f6545bfd");
-    public static final UUID BEER_3_UUID = UUID.fromString("026cc3c8-3a0c-4083-a05b-e908048c1b08");
 
     private final BeerRepository beerRepository;
 
