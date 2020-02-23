@@ -8,7 +8,6 @@ import pl.kukla.krzys.msscbeerservice.repository.BeerRepository;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
-import java.util.UUID;
 
 /**
  * @author Krzysztof Kukla
@@ -34,11 +33,11 @@ public class BeerLoader implements CommandLineRunner {
 
     private void loadBeers() {
         Beer beer1 = Beer.builder()
-            .beerName("first").beerStyle("first style").minOnHand(10).quantityToBrew(20).price(new BigDecimal("19.25")).upc(BEER_1_UPC).build();
+            .beerName("first").beerStyle("PILSNER").minOnHand(10).quantityToBrew(20).price(new BigDecimal("19.25")).upc(BEER_1_UPC).build();
         Beer beer2 = Beer.builder()
-            .beerName("second").beerStyle("secondt style").minOnHand(20).quantityToBrew(30).price(new BigDecimal("29.25")).upc(BEER_2_UPC).build();
+            .beerName("second").beerStyle("LAGER").minOnHand(20).quantityToBrew(30).price(new BigDecimal("29.25")).upc(BEER_2_UPC).build();
         Beer beer3 = Beer.builder()
-            .beerName("third").beerStyle("third style").minOnHand(30).quantityToBrew(40).price(new BigDecimal("45.25")).upc(BEER_3_UPC).build();
+            .beerName("third").beerStyle("PORTER").minOnHand(30).quantityToBrew(40).price(new BigDecimal("45.25")).upc(BEER_3_UPC).build();
 
         beerRepository.saveAll(Arrays.asList(beer1, beer2, beer3));
 
