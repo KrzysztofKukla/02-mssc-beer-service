@@ -1,4 +1,4 @@
-package pl.kukla.krzys.msscbeerservice.service;
+package pl.kukla.krzys.msscbeerservice.service.brewing;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,7 +21,7 @@ import java.util.List;
 @Slf4j
 @RequiredArgsConstructor
 @Service
-public class BrewingService {
+public class BrewBeerSender {
 
     private final BeerRepository beerRepository;
     private final BeerInventoryService beerInventoryService;
