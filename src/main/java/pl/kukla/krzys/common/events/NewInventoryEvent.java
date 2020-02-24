@@ -1,4 +1,4 @@
-package pl.kukla.krzys.msscbeerservice.event;
+package pl.kukla.krzys.common.events;
 
 import lombok.NoArgsConstructor;
 import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;

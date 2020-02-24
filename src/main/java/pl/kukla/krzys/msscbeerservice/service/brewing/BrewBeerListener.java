@@ -6,10 +6,10 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import pl.kukla.krzys.common.events.BrewBeerEvent;
+import pl.kukla.krzys.common.events.NewInventoryEvent;
 import pl.kukla.krzys.msscbeerservice.config.JmsConfig;
 import pl.kukla.krzys.msscbeerservice.domain.Beer;
-import pl.kukla.krzys.msscbeerservice.event.BrewBeerEvent;
-import pl.kukla.krzys.msscbeerservice.event.NewInventoryEvent;
 import pl.kukla.krzys.msscbeerservice.repository.BeerRepository;
 import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;
 
@@ -32,7 +32,7 @@ public class BrewBeerListener {
         beerDto.setQuantityOnHand(beer.getQuantityToBrew());
         NewInventoryEvent newInventoryEvent = new NewInventoryEvent(beerDto);
 
-        log.debug("Brewed beer " + beer.getMinOnHand() + "Quantity on hand " + beerDto.getQuantityOnHand());
+        log.debug("Received BrewBeerEvent");
 
         jmsTemplate.convertAndSend(JmsConfig.NEW_INVENTORY_QUEUE, newInventoryEvent);
     }

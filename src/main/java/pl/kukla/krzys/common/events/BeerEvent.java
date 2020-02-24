@@ -1,4 +1,4 @@
-package pl.kukla.krzys.msscbeerservice.event;
+package pl.kukla.krzys.common.events;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
