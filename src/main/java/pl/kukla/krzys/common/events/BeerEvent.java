@@ -11,6 +11,9 @@ import java.io.Serializable;
 /**
  * @author Krzysztof Kukla
  */
+
+//the same package 'pl.kukla.krzys.common.events' for many microservices is recommended by Spring framework to improve performance
+
 @Data
 @AllArgsConstructor
 @Builder
