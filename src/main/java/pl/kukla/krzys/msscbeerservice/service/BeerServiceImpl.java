@@ -7,12 +7,12 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import pl.kukla.krzys.brewery.model.BeerDto;
+import pl.kukla.krzys.brewery.model.BeerPagedList;
 import pl.kukla.krzys.msscbeerservice.domain.Beer;
 import pl.kukla.krzys.msscbeerservice.exception.NotFoundException;
 import pl.kukla.krzys.msscbeerservice.repository.BeerRepository;
 import pl.kukla.krzys.msscbeerservice.web.mapper.BeerMapper;
-import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;
-import pl.kukla.krzys.msscbeerservice.web.model.BeerPagedList;
 
 import java.util.UUID;
 import java.util.function.Function;

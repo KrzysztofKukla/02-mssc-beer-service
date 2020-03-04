@@ -8,7 +8,6 @@ import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
-import pl.kukla.krzys.msscbeerservice.web.model.BeerInventoryDto;
 
 import java.util.List;
 import java.util.Objects;

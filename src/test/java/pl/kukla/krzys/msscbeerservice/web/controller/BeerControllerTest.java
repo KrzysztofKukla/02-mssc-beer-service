@@ -14,10 +14,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
+import pl.kukla.krzys.brewery.model.BeerDto;
+import pl.kukla.krzys.brewery.model.BeerStyleEnum;
 import pl.kukla.krzys.msscbeerservice.bootstrap.BeerLoader;
 import pl.kukla.krzys.msscbeerservice.service.BeerService;
-import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;
-import pl.kukla.krzys.msscbeerservice.web.model.BeerStyleEnum;
 
 import java.math.BigDecimal;
 import java.util.UUID;

@@ -5,13 +5,13 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
-import pl.kukla.krzys.common.events.BrewBeerEvent;
+import pl.kukla.krzys.brewery.model.BeerDto;
+import pl.kukla.krzys.brewery.model.event.BrewBeerEvent;
 import pl.kukla.krzys.msscbeerservice.config.JmsConfig;
 import pl.kukla.krzys.msscbeerservice.domain.Beer;
 import pl.kukla.krzys.msscbeerservice.repository.BeerRepository;
 import pl.kukla.krzys.msscbeerservice.service.inventory.BeerInventoryService;
 import pl.kukla.krzys.msscbeerservice.web.mapper.BeerMapper;
-import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;
 
 import java.util.List;
 

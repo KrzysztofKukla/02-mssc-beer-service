@@ -1,7 +1,7 @@
-package pl.kukla.krzys.common.events;
+package pl.kukla.krzys.brewery.model.event;
 
 import lombok.NoArgsConstructor;
-import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;
+import pl.kukla.krzys.brewery.model.BeerDto;
 
 /**
  * @author Krzysztof Kukla

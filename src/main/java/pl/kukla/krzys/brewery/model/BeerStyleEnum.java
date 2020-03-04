@@ -1,4 +1,4 @@
-package pl.kukla.krzys.msscbeerservice.web.model;
+package pl.kukla.krzys.brewery.model;
 
 /**
  * @author Krzysztof Kukla

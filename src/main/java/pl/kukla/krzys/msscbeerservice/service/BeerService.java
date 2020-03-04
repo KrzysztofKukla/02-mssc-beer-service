@@ -1,8 +1,8 @@
 package pl.kukla.krzys.msscbeerservice.service;
 
 import org.springframework.data.domain.PageRequest;
-import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;
-import pl.kukla.krzys.msscbeerservice.web.model.BeerPagedList;
+import pl.kukla.krzys.brewery.model.BeerDto;
+import pl.kukla.krzys.brewery.model.BeerPagedList;
 
 import java.util.UUID;
 

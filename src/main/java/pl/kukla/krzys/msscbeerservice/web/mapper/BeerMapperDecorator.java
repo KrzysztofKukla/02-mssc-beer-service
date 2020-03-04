@@ -5,9 +5,9 @@ package pl.kukla.krzys.msscbeerservice.web.mapper;
  */
 
 import org.springframework.beans.factory.annotation.Autowired;
+import pl.kukla.krzys.brewery.model.BeerDto;
 import pl.kukla.krzys.msscbeerservice.domain.Beer;
 import pl.kukla.krzys.msscbeerservice.service.inventory.BeerInventoryService;
-import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;
 
 /**
  * Created by jt on 2019-06-08.

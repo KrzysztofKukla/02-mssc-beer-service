@@ -6,12 +6,12 @@ import org.springframework.jms.annotation.JmsListener;
 import org.springframework.jms.core.JmsTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import pl.kukla.krzys.common.events.BrewBeerEvent;
-import pl.kukla.krzys.common.events.NewInventoryEvent;
+import pl.kukla.krzys.brewery.model.BeerDto;
+import pl.kukla.krzys.brewery.model.event.BrewBeerEvent;
+import pl.kukla.krzys.brewery.model.event.NewInventoryEvent;
 import pl.kukla.krzys.msscbeerservice.config.JmsConfig;
 import pl.kukla.krzys.msscbeerservice.domain.Beer;
 import pl.kukla.krzys.msscbeerservice.repository.BeerRepository;
-import pl.kukla.krzys.msscbeerservice.web.model.BeerDto;
 
 /**
  * @author Krzysztof Kukla
