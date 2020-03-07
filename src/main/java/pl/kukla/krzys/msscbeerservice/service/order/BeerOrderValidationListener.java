@@ -31,7 +31,7 @@ public class BeerOrderValidationListener {
             .id(beerOrderDto.getId())
             .build();
         log.debug("Sending validated object to result queue");
-        jmsTemplate.convertAndSend(JmsConfig.VALID_ORDER_RESULT_QUEUE, validateOrderResultEvent);
+        jmsTemplate.convertAndSend(JmsConfig.VALIDATE_ORDER_RESPONSE_QUEUE, validateOrderResultEvent);
     }
 
 }
