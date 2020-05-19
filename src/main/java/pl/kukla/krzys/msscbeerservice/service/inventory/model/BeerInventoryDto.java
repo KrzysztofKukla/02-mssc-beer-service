@@ -1,4 +1,4 @@
-package pl.kukla.krzys.msscbeerservice.service.inventory;
+package pl.kukla.krzys.msscbeerservice.service.inventory.model;
 
 /**
  * @author Krzysztof Kukla
