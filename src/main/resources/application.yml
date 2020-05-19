@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: micro-02-mssc-beer-service
+  datasource:
+    #this is default configuration provided by Spring Boot
+    #good practice is to mimic any database vendor what you're planning to use, for example MYSQL, ORACLE etc
+    url: jdbc:h2:mem:testdb;MODE=MYSQL;
+    #only initialize 'data.sql' when we have EMBEDDED database - h2 in this case
+    initialization-mode: embedded
+  h2:
+    console:
+      enabled: true
+  cache:
+    jcache:
+      config: classpath:ehcache.xml
+  #jms properties
+  artemis:
+    user: artemis
+    password: simetraehcapa
+
+server:
+  port: 8080
+
+logging:
+  level:
+    pl:
+      kukla:
+        krzys: debug
+
+sfg:
+  brewery:
+    beer-inventory-service-host: http://localhost:8082

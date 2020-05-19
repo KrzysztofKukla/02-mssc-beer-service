@@ -1,44 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<properties>
-		<commons-lang3.version>3.9</commons-lang3.version>
-	</properties>
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <properties>
+        <commons-lang3.version>3.9</commons-lang3.version>
+    </properties>
 
-	<parent>
-		<groupId>com.github.sfg-beer-works</groupId>
-		<artifactId>sfg-brewery-bom</artifactId>
-		<version>1.0.11</version>
-	</parent>
+    <parent>
+        <groupId>com.github.sfg-beer-works</groupId>
+        <artifactId>sfg-brewery-bom</artifactId>
+        <version>1.0.11</version>
+    </parent>
 
-	<groupId>pl.kukla.krzys</groupId>
-	<artifactId>02-mssc-beer-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+    <groupId>pl.kukla.krzys</groupId>
+    <artifactId>02-mssc-beer-service</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
 
-	<name>02-mssc-beer-service</name>
-	<description>microservice for beer service</description>
+    <name>02-mssc-beer-service</name>
+    <description>microservice for beer service</description>
 
-	<dependencies>
-		<!-- Utils -->
-		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-			<version>${commons-lang3.version}</version>
-		</dependency>
+    <dependencies>
+        <!-- Utils -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>${commons-lang3.version}</version>
+        </dependency>
 
-		<!-- Cache -->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-cache</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>javax.cache</groupId>
-			<artifactId>cache-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.ehcache</groupId>
-			<artifactId>ehcache</artifactId>
-		</dependency>
-	</dependencies>
+        <!-- Cache -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-cache</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>javax.cache</groupId>
+            <artifactId>cache-api</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.ehcache</groupId>
+            <artifactId>ehcache</artifactId>
+        </dependency>
+    </dependencies>
 </project>
