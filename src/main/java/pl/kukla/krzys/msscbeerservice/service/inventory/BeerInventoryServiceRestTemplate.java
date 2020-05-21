@@ -18,6 +18,7 @@ import java.util.UUID;
 /**
  * @author Krzysztof Kukla
  */
+@Deprecated(since = "to call other service we should use @FeignClient")
 //initialize this bean if loaded profile is NOT 'local-discovery'
 @Profile("!local-discovery")
 //This is RestTemplate Client for BeerInventoryService

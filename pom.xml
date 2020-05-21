@@ -16,7 +16,7 @@
     <artifactId>02-mssc-beer-service</artifactId>
     <version>0.0.1-SNAPSHOT</version>
 
-    <name>02-mssc-beer-service</name>
+    <name>micro-02-mssc-beer-service</name>
     <description>microservice for beer service</description>
 
     <dependencies>

@@ -1,0 +1,4 @@
+#Hystrix allows to forward to failover service if requested service is down
+feign:
+  hystrix:
+    enabled: true

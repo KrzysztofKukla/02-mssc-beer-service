@@ -18,7 +18,7 @@ import java.util.UUID;
 @Service
 @RequiredArgsConstructor
 @Slf4j
-public class BeerInventoryServiceFeign implements BeerInventoryService {
+public class BeerInventoryServiceImpl implements BeerInventoryService {
 
     private final InventoryServiceFeignClient inventoryServiceFeignClient;
 

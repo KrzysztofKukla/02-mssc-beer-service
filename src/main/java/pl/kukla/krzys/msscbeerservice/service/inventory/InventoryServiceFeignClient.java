@@ -14,10 +14,11 @@ import java.util.UUID;
  */
 //in runtime Spring provides implementation for that
 // 'micro-06-mssc-beer-inventory-service' has to be registered in Eureka
-@FeignClient(name = "micro-06-mssc-beer-inventory-service")
+//when inventoryService cannot be reached then it is going to fallback-> 'InventoryServiceFeignClientFailover'
+@FeignClient(name = "micro-06-mssc-beer-inventory-service", fallback = InventoryServiceFeignClientFailover.class)
 public interface InventoryServiceFeignClient {
 
-    public static final String INVENTORY_PATH = "/api/v1/beer/{beerId}/inventory";
+    String INVENTORY_PATH = "/api/v1/beer/{beerId}/inventory";
 
     @GetMapping(value = INVENTORY_PATH)
         //'beerId' will bind to 'beerId' from '/api/v1/beer/{beerId}/inventory'
