@@ -4,6 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <properties>
         <commons-lang3.version>3.9</commons-lang3.version>
+        <logstash-logback-encoder.version>6.3</logstash-logback-encoder.version>
     </properties>
 
     <parent>
@@ -39,6 +40,14 @@
         <dependency>
             <groupId>org.springframework.cloud</groupId>
             <artifactId>spring-cloud-starter-zipkin</artifactId>
+        </dependency>
+
+        <!-- logstash allows to grab ( chwytać ) logfiles and move them to logging server -->
+        <!-- in this case used to JSON encoding -->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+            <version>${logstash-logback-encoder.version}</version>
         </dependency>
 
         <!-- Utils -->
